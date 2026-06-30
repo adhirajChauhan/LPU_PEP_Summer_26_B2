@@ -1,0 +1,203 @@
+https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& numbers, int target) {
+        int i = 0;
+        int j = numbers.size() - 1;
+
+        while(i < j){
+            int sum = numbers[i] + numbers[j];
+            if(sum == target){
+                return {i+1, j+1};
+            }
+            else if(sum > target) j--;
+            else i++;
+        }
+        return {};
+    }
+};
+
+
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int minPrice = prices[0];
+        int maxProfit = 0;
+
+        for(int i = 1; i < prices.size(); i++){
+            if(prices[i] < minPrice){
+                minPrice = prices[i];
+            }
+            else{
+                int profit = prices[i] - minPrice;
+                if(profit > maxProfit) maxProfit = profit;
+            }
+        }
+        return maxProfit;
+    }
+};
+
+https://www.geeksforgeeks.org/problems/triplet-sum-in-array-1587115621/1
+
+class Solution {
+  public:
+    bool hasTripletSum(vector<int> &arr, int target) {
+        // Code Here
+        sort(arr.begin(), arr.end());
+        
+        for(int i = 0; i < arr.size() - 2; i++){
+            int j = i + 1;
+            int k = arr.size() - 1;
+            
+            while(j < k){
+                int sum = arr[i] + arr[j] + arr[k];
+                if(sum == target) return true;
+                else if(sum < target) j++;
+                else k--;
+            }
+        }
+        return false;
+    }
+};
+
+
+https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int i = 0;
+
+        for(int j = 1; j < nums.size(); j++){
+            if(arr[j] != arr[i]){
+                i++;
+                arr[i] = arr[j];
+            }
+        }
+        return i + 1;
+    }
+};
+
+
+https://leetcode.com/problems/merge-sorted-array/
+
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int i = m - 1;
+        int j =  n - 1;
+        int k = m + n - 1;
+
+        while(j >=0){
+            if(i >= 0 && nums1[i] > nums2[j]){
+                nums1[k--] = nums1[i--];
+            }
+            else{
+                nums1[k--] = nums2[j--];
+            }
+        }
+    }
+};
+
+
+https://www.geeksforgeeks.org/problems/pair-sum-in-a-sorted-and-rotated-array/1
+
+class Solution {
+  public:
+    bool pairInSortedRotated(vector<int>& arr, int target) {
+        // code here
+        int pivot = -1;
+        
+        for(int i = 0; i < arr.size() - 1; i++){
+            if(arr[i] > arr[i + 1]){
+                pivot = i + 1;
+                break;
+            }
+        }
+        
+        int left = pivot;
+        int right = (pivot - 1 + n) % n;
+        
+        while(left != right){
+            int sum = arr[left] + arr[right];
+            
+            if(sum == target) return true;
+            
+            else if(sum < target) {
+                left = (left + 1)% n;
+                
+            }
+            else{
+                right = (right - 1 + n) % n;
+            }
+        }
+        return false;
+        
+    }
+};
+
+
+https://leetcode.com/problems/maximum-subarray/
+
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int currSum = 0;
+        int maxSum = nums[0];
+
+        for(int i = 0; i < nums.size(); i++){
+            currSum += nums[i];
+            if(currSum > maxSum) maxSum = currSum;
+
+            if(currSum < 0) currSum = 0;
+        }
+        return maxSum;
+    }
+};
+
+
+
+https://www.geeksforgeeks.org/problems/reverse-array-in-groups0255/1
+
+class Solution {
+  public:
+    void reverseInGroups(vector<int> &arr, int k) {
+        // code here
+        int n = arr.size();
+        
+        for(int i = 0; i < n; i += k){
+            int start = i;
+            int end = min(i + k - 1, n - 1);
+            
+            while( start < end){
+                swap(arr[start++], arr[end--]);
+            }
+        }
+    }
+};
+
+
+https://www.geeksforgeeks.org/problems/max-sum-subarray-of-size-k5313/1
+class Solution {
+  public:
+    int maxSubarraySum(vector<int>& arr, int k) {
+        // code here
+        int n = arr.size();
+        int currSum = 0;
+        int maxSum = 0;
+        
+        for(int i = 0; i < k; i++){
+            currSum += arr[i];
+        }
+        maxSum = currSum;
+        
+        for(int i = k; i < n; i++){
+            currSum = currSum - arr[i - k] + arr[i];
+            if(currSum > maxSum) maxSum = currSum;
+        }
+        return maxSum;
+    }
+};
