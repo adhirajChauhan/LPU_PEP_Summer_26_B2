@@ -1,9 +1,9 @@
 #include<iostream>
 using namespace std;
 
-void printEvenColumn(int arr[][], int row, int col){
+// void printEvenColumn(int arr[][], int row, int col){
 
-}
+// }
  
 int main()
 {
