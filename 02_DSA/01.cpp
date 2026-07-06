@@ -81,6 +81,14 @@ void delAtEnd(Node* &head){
     temp->next = NULL;
 }
 
+void delAtBeg(Node* &head){
+    if(head == NULL) return;
+
+    Node* temp = head;
+    head = head->next;
+    delete temp;
+}
+
 int main()
 {
   Node* head = NULL;  
