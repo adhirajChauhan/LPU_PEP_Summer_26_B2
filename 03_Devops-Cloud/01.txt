@@ -1,0 +1,57 @@
+pep-practice/
+├── projects/
+│   ├── website/
+│   └── mobile-app/
+├── logs/
+│   └── access.log      (file containing one line: "server started")
+├── backups/
+└── README.txt          (file containing: your name and today’s date)
+
+
+
+
+
+//file permissions
+
+Letter
+    r (read)
+    w (wrie)
+    x (execute)
+    //
+
+    owner (u)
+    group(g)
+    others(o)
+
+    -rw-rw-r-- -> 
+    Character 1 -> the type, - means normal file, d means directory
+    Character 2 - 4 -the owner's rights
+    Character 5 -7 - the group's right
+    Character 8 - 10 - other;s right
+
+//change permissions - chmod
+
+permission       value
+    r(read)         4
+    w(write)        2
+    x (execute)     1
+
+
+    644
+
+//change owner - chown
+
+// ps aux -> snapshot - one long list of every running process
+//top -> live - self refreshing list 
+
+
+to get the log data
+got to /var/log/syslog
+
+// to get last 50 line of log file
+tail -n 50 filname
+
+
+
+
+
